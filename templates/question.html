@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Construct Startup{% endblock %}
+
+{% block content %}
+    <form id="form" action="/post/startup/" method="post" enctype='application/json'>
+    {% csrf_token %}
+{% for question in question_entries %}
+    <h2>{{ question.question_text }}</h2>
+    {% if question.question_type.name == "Text" %}
+        <input class="form-control" type="text" name="question[{{ question.id }}]">
+    {% elif question.question_type.name == 'Link' %}
+        <input class="form-control" type="text" name="question[{{ question.id }}]" placeholder="http://upstartup.com/">
+    {% elif question.question_type.name == 'Date' %}
+        <input  class=form-control" type="text" placeholder="01/01/2015"  name="question[{{ question.id }}]">
+    {% elif question.question_type.name == 'Button Menu' %}
+        {% for question_id, question_options in options.items %}
+            {% if question_id ==  question.id %}
+{#                <input type="hidden" name="question-id" value="{{question_id}}">#}
+                <div class="btn-group" data-toggle="buttons">
+                    {% for option in question_options %}
+                    <label class="btn btn-primary">
+                        <input type="radio" name="question[{{question_id}}]" value="{{ option.id }}" id="option" autocomplete="off"> {{ option.option }}
+                    </label>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if question.question_hint != "" %}
+        <p>Подсказка: <type>{{ question.question_hint }}</type></p>
+    {% endif %}
+
+{% endfor %}
+    <a href="javascript:{}" onclick="submit()" class="btn btn-primary btn-lg" role="button" type="submit">Generate startup's profile</a>
+    </form>
+    <script>
+function submit() {
+
+    document.getElementById('form').submit();
+}
+    </script>
+
+{% endblock %}
+
+

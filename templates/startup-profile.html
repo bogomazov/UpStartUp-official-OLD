@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Startup profile{% endblock %}
+
+    {% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="progress-projeckt">
+                <a class="btn-share pull-right" href="javascript:void(0);">Share</a>
+                <div class="progress clearfix">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        40%
+{#                        <span class="sr-only">40% Complete (success)</span>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+
+            <div id="tabs" class="tab-container">
+
+                <ul class='etabs'>
+                    <li class='tab'><a href="#tabs1-html">Summary</a></li>
+                    <li class='tab'><a href="#tabs1-js">Группа поддержки</a></li>
+                    <li class='tab'><a href="#tabs1-css">Отзывы</a></li>
+                </ul>
+
+                <div class="tabs-content" id="tabs1-html">
+                    <a name="general"></a>
+                    <h1 class="main-title">Общие</h1>
+{#                    {% for question, answer in general_list %}#}
+{#                        {% if question.question_type.name in TEXT_TYPES %}#}
+{#                            <div class="other-text">#}
+{#                                <p>{{ question.question_text }}:#}
+{#                                    {%   if answer != None %}#}
+{#                                        <span>{{ answer.answer_text }}</span>#}
+{#                                    {% else %}#}
+{##}
+{#                                    {% endif %}#}
+{#                                </p>#}
+{#                            </div>#}
+{##}
+{#                        {% elif question.question_type.name in "Text" %}#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+
+
+                    <div class="other-text">
+{#                        <a href="#" id="username">superuser</a>#}
+{#                    {{ project_stage.answer.answer_text }}#}
+{#                    <a href="#" class="editable" data-type="text" data-pk="1" data-url="/post" data-title="Enter username">superuser</a>#}
+                        <p>Этап проекта: <span  class="label label-success">Ideation</span></p>
+                        {% if website %}
+                        <p>Сайт : <span><a href="#" class="editable" data-type="text" data-pk="{{ website.question.id }}" data-url="{{ url_post }}" data-title="{{ website.question.question_text }}">{{ website.answer.answer_text }}</a></span>
+                        {% endif %}
+                        <br>
+                        {% if video.answer.answer_text != '' %}
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/Q4EzYAB8Q4A" frameborder="0" allowfullscreen></iframe>
+                        <p><span><a href="#" class="editable" data-type="text" data-pk="{{ video.question.id }}" data-url="{{ url_post }}" data-title="{{ video.answer.answer_text }}">https://www.youtube.com/embed/Q4EzYAB8Q4A</a></span>
+                        {% endif %}
+                        <br>
+                        {% if project_date.answer.answer_text != '' %}
+                        <p>Дата создания проекта : <span><a href="#" class="date" data-type="date" data-viewformat="dd.mm.yyyy" data-placement="right" data-pk="{{ project_date.question.id }}" data-url="{{ url_post }}" data-title="{{ project_date.question.question_text }}">20/03/2015</a></span>
+                        {% endif %}
+
+                    </div>
+                    <h1 class="main-title">Возможность</h1>
+
+{#                    <p>Сфера: <span>{{ possibility.industry }}</span>#}
+
+                    <h2 class="title-side">Выгоды для заинтересованных лиц</h2>
+
+                    <table class="table-c">
+
+                        <thead>
+                            <tr>
+                                <td>Заинтересованное лицо</td>
+                                <td>Выгода</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for person, benefit in benefits %}
+                            <tr>
+                                <td>{{ person }}</td>
+                                <td>{{ benefit }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>Ценность для клиента</td>
+                                <td>Повышение скорости и вероятности успешного запуска проекта</td>
+                            </tr>
+                            <tr>
+                                <td>Ценность для потребителя</td>
+                                <td>Удобство и економия времени</td>
+                            </tr>
+                            <tr>
+                                <td>Ценность для команды</td>
+                                <td>Професиональное саморазвитие</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <h2 class="title-side">Целевая аудитория</h2>
+                <div id="regions_div" style=" height: 500px;"></div>
+
+                <h2 class="title-side">Динамика сегмента</h2>
+                <div id="chart_div" style="height: 500px;"></div>
+
+                <div id="timeline" style="height: 180px;"></div>
+
+                </div>
+                <div class="tabs-content" id="tabs1-js">
+                    <h2>JS for these tabs</h2>
+                    <!-- content -->
+                </div>
+                <div class="tabs-content" id="tabs1-css">
+                    <h2>CSS Styles for these tabs</h2>
+                    <!-- content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="sidebar">
+                <div class="sidebar-item">
+                    <h2 class="title-side">Название проекта</h2>
+
+                    <div class="raring-company">
+                        <div class="rating-item">
+                            <span class="pull-left">Команда</span>
+                            <div class="rating pull-right">
+                                <input type="hidden" name="val" value="3.75"/>
+                                <input type="hidden" name="votes" value="5"/>
+                                <input type="hidden" name="vote-id" value="3"/>
+                                <input type="hidden" name="cat_id" value="2"/>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="pull-left">Развитие</span>
+                            <div class="rating pull-right">
+                                <input type="hidden" name="val" value="3.75"/>
+                                <input type="hidden" name="votes" value="5"/>
+                                <input type="hidden" name="vote-id" value="3"/>
+                                <input type="hidden" name="cat_id" value="2"/>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="pull-left">Финансы</span>
+                            <div class="rating pull-right">
+                                <input type="hidden" name="val" value="3.75"/>
+                                <input type="hidden" name="votes" value="5"/>
+                                <input type="hidden" name="vote-id" value="3"/>
+                                <input type="hidden" name="cat_id" value="2"/>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="pull-left">Уникальность</span>
+                            <div class="rating pull-right">
+                                <input type="hidden" name="val" value="2"/>
+                                <input type="hidden" name="votes" value="5"/>
+                                <input type="hidden" name="vote-id" value="3"/>
+                                <input type="hidden" name="cat_id" value="2"/>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="pull-left">Бренд</span>
+                            <div class="rating pull-right">
+                                <input type="hidden" name="val" value="2"/>
+                                <input type="hidden" name="votes" value="5"/>
+                                <input type="hidden" name="vote-id" value="3"/>
+                                <input type="hidden" name="cat_id" value="2"/>
+                            </div>
+                        </div>
+{#                        <p class="category-title">Бренд</p>#}
+                        <div class="rating-item">
+                            <span class="pull-left">Customer</span>
+                            <div class="rating pull-right">
+                                <input type="hidden" name="val" value="3.75"/>
+                                <input type="hidden" name="votes" value="5"/>
+                                <input type="hidden" name="vote-id" value="3"/>
+                                <input type="hidden" name="cat_id" value="2"/>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="pull-left">Общий</span>
+                            <div class="rating pull-right">
+                                <input type="hidden" name="val" value="3.75"/>
+                                <input type="hidden" name="votes" value="5"/>
+                                <input type="hidden" name="vote-id" value="3"/>
+                                <input type="hidden" name="cat_id" value="2"/>
+                            </div>
+                        </div>
+                        <a class="btn-share btn-r" href="javascript:void(0);">Детальнее</a>
+                    </div>
+
+                    <ul class="faunder">
+                        <li>
+                            <figure></figure>
+                            <a href="javascript:void(0);">Имя фаундера</a>
+                        </li>
+                        <li>
+                            <figure></figure>
+                            <a href="javascript:void(0);">Роль в команде</a>
+                        </li>
+                        <li>
+                            <figure></figure>
+                            <a href="javascript:void(0);">Ангел: роль в проекте</a>
+                        </li>
+                    </ul>
+
+                    <ul class="clearfix faunder list-angel">
+                        <li>
+                            <figure></figure>
+                            <a href="javascript:void(0);">Ангел</a>
+                        </li>
+                        <li>
+                            <figure></figure>
+                            <a href="javascript:void(0);">Ангел</a>
+                        </li>
+                        <li>
+                            <figure></figure>
+                            <a href="javascript:void(0);">Ангел</a>
+                        </li>
+                        <li>
+                            <figure></figure>
+                            <a href="javascript:void(0);">Ангел</a>
+                        </li>
+                    </ul>
+
+                    <div class="django-developer">
+                        <a href="javascript:void(0);">
+                            <span>?</span>
+                            <p>django-developer</p>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        <!--end wrapper-->
+
+
+
