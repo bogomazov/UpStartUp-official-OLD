@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'userprofile.UserProfile'
 
 # Application definition
 
@@ -36,8 +37,20 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'constructor',
+
+    'djangobower',
+    'djangular',
+    'compressor',
+    'startup',
+    'userprofile',
     'rest_framework',
+)
+
+BOWER_INSTALLED_APPS = (
+    'angularjs',
+    'jquery',
+    'bootstrap',
+    'angular-xeditable'
 )
 # AUTHENTICATION_BACKENDS = (
 #     'emailusernames.backends.EmailAuthBackend',
@@ -59,7 +72,6 @@ MIDDLEWARE_CLASSES = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.contrib.auth.context_processors.auth',
-    'constructor.startup.views.standard_processor'
 )
 
 # AUTHENTICATION_BACKENDS = (
@@ -82,6 +94,16 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'db_name',
+#         'USER': 'db_user',
+#         'PASSWORD': 'db_user_password',
+#         'HOST': ''
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -101,11 +123,47 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static/"),
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+BOWER_COMPONENTS_ROOT = os.path.join(STATIC_ROOT, 'libs')
+
+# # STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static/"),
+# )
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+    'compressor.finders.CompressorFinder',
 )
+
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.IsAdminUser'
+    ],
+    'PAGE_SIZE': 10,
+}
+
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'bogomazov1998@gmail.com'
+# EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.yandex.ua'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'andrew@bogomazz.com'
+EMAIL_HOST_PASSWORD = 'password1998'
