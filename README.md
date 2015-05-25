@@ -13,7 +13,7 @@ Platform for lean startup development.
 
 ## Angular directory structure (in the project directory root):
 
-* /static/javascripts/<ng_app_name>.config.js
+* /static/javascripts/\<ng_app_name\>.config.js
 * /static/javascripts/<ng_app_name>.js
 * /static/javascripts/<ng_app_name>.routes.js
 * /static/javascripts/<ng_module_name>/<ng_module_name>.module.js
