@@ -1,5 +1,17 @@
+#PYTHON
 *.pyc
+
+#SQLITE
 *.sqlite3
 dump.json
+
+#OTHER FOLDER
 media/
 upstartup-env/
+
+#IDEA
+.idea
+
+#FRONTEND
+frontend/node-modules/
+frontend/bower-components/
