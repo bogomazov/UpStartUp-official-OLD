@@ -12,3 +12,8 @@
 .thumbnail img.pull-right {
   width: 50px;
 }
+
+.navbarDate {
+  color: #ffffff;
+  margin: 1em 1.5em auto;
+}
