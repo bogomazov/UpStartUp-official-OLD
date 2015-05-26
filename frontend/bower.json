@@ -1,6 +1,6 @@
 {
   "name": "upStartUp",
-  "version": "0.0.2",
+  "version": "0.0.21",
   "dependencies": {
     "angular-animate": ">=1.3.4",
     "angular-cookies": ">=1.3.4",
