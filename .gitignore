@@ -11,7 +11,3 @@ upstartup-env/
 
 #IDEA
 .idea
-
-#FRONTEND
-frontend/node-modules/
-frontend/bower-components/
