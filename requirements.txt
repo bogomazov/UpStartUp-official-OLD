@@ -13,7 +13,6 @@ django-appconf==1.0.1
 django-bower==5.0.4
 django-bower-app==0.5
 django-compressor==1.5
-django-email-as-username==1.6.7
 django-filter==0.9.2
 djangorestframework==3.1.1
 httpie==0.9.2

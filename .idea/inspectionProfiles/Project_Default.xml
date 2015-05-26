@@ -1,0 +1,36 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0" is_locked="false">
+    <option name="myName" value="Project Default" />
+    <option name="myLocal" value="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="22">
+            <item index="0" class="java.lang.String" itemvalue="virtualenv" />
+            <item index="1" class="java.lang.String" itemvalue="Markdown" />
+            <item index="2" class="java.lang.String" itemvalue="oauthlib" />
+            <item index="3" class="java.lang.String" itemvalue="PyJWT" />
+            <item index="4" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="5" class="java.lang.String" itemvalue="pep8" />
+            <item index="6" class="java.lang.String" itemvalue="Pygments" />
+            <item index="7" class="java.lang.String" itemvalue="python-social-auth" />
+            <item index="8" class="java.lang.String" itemvalue="npm" />
+            <item index="9" class="java.lang.String" itemvalue="South" />
+            <item index="10" class="java.lang.String" itemvalue="requests-oauthlib" />
+            <item index="11" class="java.lang.String" itemvalue="six" />
+            <item index="12" class="java.lang.String" itemvalue="python-openid" />
+            <item index="13" class="java.lang.String" itemvalue="Wand" />
+            <item index="14" class="java.lang.String" itemvalue="requests" />
+            <item index="15" class="java.lang.String" itemvalue="optional-django" />
+            <item index="16" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="17" class="java.lang.String" itemvalue="httpie" />
+            <item index="18" class="java.lang.String" itemvalue="django-email-as-username" />
+            <item index="19" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="20" class="java.lang.String" itemvalue="django-filter" />
+            <item index="21" class="java.lang.String" itemvalue="psycopg2" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
