@@ -50,7 +50,14 @@ BOWER_INSTALLED_APPS = (
     'angularjs',
     'jquery',
     'bootstrap',
-    'angular-xeditable'
+    'angular-xeditable',
+    'angular-animate',
+    'angular-cookies',
+    'angular-touch',
+    'angular-sanitize',
+    'angular-resource',
+    'angular-route',
+    'angular-mocks'
 )
 # AUTHENTICATION_BACKENDS = (
 #     'emailusernames.backends.EmailAuthBackend',

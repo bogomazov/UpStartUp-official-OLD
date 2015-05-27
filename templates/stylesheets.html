@@ -2,5 +2,9 @@
 {% load staticfiles %}
 
 {% compress css %}
-<link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}" />
+<!--  Core Libs -->
+<link rel="stylesheet" type="text/css" href="{% static 'libs/bower_components/bootstrap/dist/css/bootstrap.css' %}" />
+
+<!--  Custom Libs -->
+<link rel="stylesheet" type="text/css" href="{% static 'app/index.css' %}" />
 {% endcompress %}

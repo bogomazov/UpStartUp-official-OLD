@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="thinkster">
+<html ng-app="upStartUp">
 <head>
-  <title>thinkster-django-angular-boilerplate</title>
+  <title>upStartUp</title>
 
   <base href="/" />
 
@@ -9,13 +9,8 @@
 </head>
 
 <body>
-  {% include 'navbar.html' %}
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12 ng-view"></div>
-    </div>
-  </div>
+  <div ng-view></div>
 
   {% include 'javascripts.html' %}
 </body>
