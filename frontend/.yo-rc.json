@@ -46,9 +46,9 @@
         "extension": "css"
       },
       "jsPreprocessor": {
-        "key": "none",
+        "key": "babel",
         "extension": "js",
-        "srcExtension": "js"
+        "srcExtension": "es6"
       },
       "htmlPreprocessor": {
         "key": "none",

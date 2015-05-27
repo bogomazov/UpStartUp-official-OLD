@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('upStartUp')
-  .controller('MainCtrl', function ($scope) {
+class MainCtrl {
+  constructor ($scope) {
     $scope.awesomeThings = [
       {
         'title': 'AngularJS',
@@ -44,9 +44,20 @@ angular.module('upStartUp')
         'url': 'http://getbootstrap.com/',
         'description': 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.',
         'logo': 'bootstrap.png'
+      },
+      {
+        'title': 'ES6 (Babel formerly 6to5)',
+        'url': 'https://babeljs.io/',
+        'description': 'Turns ES6+ code into vanilla ES5, so you can use next generation features today.',
+        'logo': 'babel.png'
       }
     ];
-    angular.forEach($scope.awesomeThings, function(awesomeThing) {
+    $scope.awesomeThings.forEach(function(awesomeThing) {
       awesomeThing.rank = Math.random();
     });
-  });
+  }
+}
+
+MainCtrl.$inject = ['$scope'];
+
+export default MainCtrl;

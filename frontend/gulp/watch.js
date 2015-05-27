@@ -8,7 +8,7 @@ function isOnlyChange(event) {
 }
 
 module.exports = function(options) {
-  gulp.task('watch', ['inject'], function () {
+  gulp.task('watch', ['scripts:watch', 'inject'], function () {
 
     gulp.watch([options.src + '/*.html', 'bower.json'], ['inject']);
 
@@ -20,13 +20,6 @@ module.exports = function(options) {
       }
     });
 
-    gulp.watch(options.src + '/app/**/*.js', function(event) {
-      if(isOnlyChange(event)) {
-        gulp.start('scripts');
-      } else {
-        gulp.start('inject');
-      }
-    });
 
     gulp.watch(options.src + '/app/**/*.html', function(event) {
       browserSync.reload(event.path);
