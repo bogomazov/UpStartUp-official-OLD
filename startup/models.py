@@ -90,7 +90,7 @@ class Startup(models.Model):
     stage = models.ForeignKey('StartupStage', null=True)
     logo = models.ImageField(upload_to='startup/logo', default="")
     profile_image = models.ImageField(upload_to='startup/logo', default="")
-    created_at = models.DateTimeField(auto_now_add=True, editable=False, default=datetime.datetime.today())
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(blank=True, null=True)
 
     def __unicode__(self):
@@ -114,8 +114,8 @@ class Answer(models.Model):
     answer_option = models.ManyToManyField('AnswerOption', blank=True, default=[])
     language = models.ForeignKey(Language, default=0)
     answer_text = models.CharField(max_length=500, default="")
-    created_at = models.DateTimeField(auto_now_add=True, default=datetime.datetime.today())
-    updated_at = models.DateTimeField(auto_now=True, default=datetime.datetime.today())
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(UserProfile, default=0)
 
     @staticmethod

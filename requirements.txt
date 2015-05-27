@@ -1,5 +1,5 @@
 wsgiref==0.1.2
-Django==1.7.3
+Django==1.8.2
 Jinja2==2.7.3
 Markdown==2.6.2
 MarkupSafe==0.23
