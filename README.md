@@ -35,5 +35,6 @@ Platform for lean startup development.
      'angular-xeditable'
  )```
  
-* then python manage.py bower install to collect all libs in `static/libs/bower_components`
+ 
+* then `python manage.py bower install` to collect all libs in `static/libs/bower_components`
 
