@@ -48,10 +48,10 @@ class UserProfile(AbstractBaseUser):
     last_name = models.CharField(max_length=40, blank=True)
 
     #type of a user: investor, startup founder etc.
-    user_type = models.ForeignKey('UserType', default=1)
+    user_type = models.ForeignKey('UserType', blank=True)
     access_token = models.CharField(max_length=100, blank=True)
     # Social media auth
-    auth_type = models.ForeignKey('AuthType', default=1)
+    auth_type = models.ForeignKey('AuthType', blank=True)
 
 
     avatar = models.ImageField(upload_to='static/files/user/avatar', default="")
