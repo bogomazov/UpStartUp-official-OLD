@@ -1,22 +1,8 @@
-"""
-Django settings for upstartup project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from config import *
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b&5i=#%-!1#ivo$&a&!#k5za3nli%-wi#i!e1n!yjxc=-$0(ne'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -27,6 +13,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'userprofile.UserProfile'
+SOCIAL_AUTH_USER_MODEL = 'userprofile.UserProfile'
 
 # Application definition
 
@@ -44,8 +31,14 @@ INSTALLED_APPS = (
     'startup',
     'userprofile',
     'rest_framework',
+    'django_extensions',
+    'werkzeug',
+    # 'south',
+    # 'social.apps.django_app.default',
+    # 'social_auth',
+    # 'rest_framework_swagger',
 )
-
+# SOCIAL_AUTH_STORAGE = 'social.apps.django_app.me.models.DjangoStorage'
 BOWER_INSTALLED_APPS = (
     'angularjs',
     'jquery',
@@ -59,11 +52,40 @@ BOWER_INSTALLED_APPS = (
     'angular-route',
     'angular-mocks'
 )
-# AUTHENTICATION_BACKENDS = (
-#     'emailusernames.backends.EmailAuthBackend',
-#     # Uncomment the following to make Django tests pass:
-#     # 'django.contrib.auth.backends.ModelBackend',
-# )
+
+AUTHENTICATION_BACKENDS = (
+    # 'social.backends.linkedin.LinkedinOAuth2',
+    # 'social.backends.linkedin.LinkedinOAuth',
+    # 'social.backends.facebook.FacebookOAuth2',
+    # 'social.backends.facebook.FacebookAppOAuth2',
+
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+# Add email to requested authorizations.
+
+
+SOCIAL_AUTH_PIPELINE = (
+     'social.pipeline.social_auth.social_details',
+     'social.pipeline.social_auth.social_uid',
+     'social.pipeline.social_auth.auth_allowed',
+     'social.pipeline.social_auth.social_user',
+     'social.pipeline.user.get_username',
+     'social.pipeline.social_auth.associate_by_email',
+     'social.pipeline.user.create_user',
+     'social.pipeline.social_auth.associate_user',
+     'social.pipeline.social_auth.load_extra_data',
+     'social.pipeline.user.user_details'
+)
+
+# LOGIN_URL          = '/login/'
+# LOGIN_REDIRECT_URL = '/logged-in/'
+# LOGIN_ERROR_URL    = '/login-error/'
+
+SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,13 +101,10 @@ MIDDLEWARE_CLASSES = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.contrib.auth.context_processors.auth',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 
-# AUTHENTICATION_BACKENDS = (
-#     'emailusernames.backends.EmailAuthBackend',
-#     # Uncomment the following to make Django tests pass:
-#     # 'django.contrib.auth.backends.ModelBackend',
-# )
 
 ROOT_URLCONF = 'upstartup.urls'
 
@@ -95,13 +114,7 @@ WSGI_APPLICATION = 'upstartup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-#
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -111,6 +124,7 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -137,11 +151,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 BOWER_COMPONENTS_ROOT = os.path.join(STATIC_ROOT, 'libs')
 
-# # STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static/"),
-# )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -154,13 +164,10 @@ TEMPLATE_DIRS = (
 )
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
         'rest_framework.permissions.IsAdminUser'
     ],
+
     'PAGE_SIZE': 10,
 }
 

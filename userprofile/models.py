@@ -24,18 +24,44 @@ class UserProfileManager(BaseUserManager):
         user = self.create_user(email, password, **kwargs)
 
         user.is_admin = True
-
         user.save()
 
         return user
 
+
+class UserType(models.Model):
+    name =  models.CharField(max_length=50, default="")
+
+    def __unicode__(self):
+        return self.name
+
+class AuthType(models.Model):
+    name =  models.CharField(max_length=50, default="")
+
+    def __unicode__(self):
+        return self.name
 
 class UserProfile(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)
-    tagline = models.CharField(max_length=140, blank=True)
+
+    #type of a user: investor, startup founder etc.
+    user_type = models.ForeignKey('UserType', default=1)
+    access_token = models.CharField(max_length=100, blank=True)
+    # Social media auth
+    auth_type = models.ForeignKey('AuthType', default=1)
+
+
+    avatar = models.ImageField(upload_to='static/files/user/avatar', default="")
+    avatar_url = models.CharField(max_length=100, default="")
+    country = models.CharField(max_length=100, default="")
+    headline = models.CharField(max_length=100, default="")
+    industry = models.CharField(max_length=100, default="")
+    summary = models.CharField(max_length=500, default="")
+    expires_in = models.CharField(max_length=100, default="")
+    current_language = models.ForeignKey('Language', default=1)
 
     is_admin = models.BooleanField(default=False)
 
@@ -55,6 +81,8 @@ class UserProfile(AbstractBaseUser):
 
     def get_short_name(self):
         return self.first_name
+
+
     @property
     def is_staff(self):
         return self.is_admin
@@ -68,11 +96,7 @@ class UserProfile(AbstractBaseUser):
         return self.is_admin
 
 
-class UserType(models.Model):
-    name =  models.CharField(max_length=50, default="")
 
-    def __unicode__(self):
-        return self.name
 
 # class UserProfile(models.Model):
 #     user = models.OneToOneField(AUTH_USER)
