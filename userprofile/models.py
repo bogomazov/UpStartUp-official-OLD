@@ -61,7 +61,7 @@ class UserProfile(AbstractBaseUser):
     industry = models.CharField(max_length=100, default="")
     summary = models.CharField(max_length=500, default="")
     expires_in = models.CharField(max_length=100, default="")
-    current_language = models.ForeignKey('Language', default=1)
+    current_language = models.ForeignKey('Language', null=True)
 
     is_admin = models.BooleanField(default=False)
 
