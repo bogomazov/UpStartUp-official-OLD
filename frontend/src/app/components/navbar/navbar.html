@@ -1,21 +1,26 @@
-<nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl">
+<nav class="navbar navbar-fixed-top navbar-default" ng-controller="NavbarCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
-      </a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#response-menu">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+    <div class="collapse navbar-collapse" id="response-menu">
       <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li>Current date: {{ date | date:'yyyy-MM-dd' }}</li>
+        <li>Current date: {{ dateIterator | date:'mediumTime' }}</li>
       </ul>
+
     </div>
   </div>
 </nav>
