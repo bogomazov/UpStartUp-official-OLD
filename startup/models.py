@@ -85,13 +85,13 @@ class StartupStage(models.Model):
        return u"{} with priority rate {}".format(self.stage, self.rate)
 
 class Startup(models.Model):
-    name = models.CharField(max_length=100, default="")
+    name = models.CharField(max_length=100, unique=True)
     founder = models.ForeignKey(UserProfile)
     stage = models.ForeignKey('StartupStage', null=True)
-    logo = models.ImageField(upload_to='startup/logo', default="")
-    profile_image = models.ImageField(upload_to='startup/logo', default="")
+    logo = models.ImageField(upload_to='startup/logo', null=True)
+    profile_image = models.ImageField(upload_to='startup/logo', null=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    modified_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return self.name

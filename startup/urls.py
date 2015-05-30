@@ -1,10 +1,22 @@
-from django.conf.urls import url, include
-from rest_framework import routers
 
+__author__ = 'andrey'
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
-urlpatterns = [
-    # url(r'^', include(router.urls)),
-    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]
+from django.conf.urls import include, patterns, url
+from userprofile.views import StartupViewSet
+
+startup_list = StartupViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
+})
+startup_detail = StartupViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+urlpatterns = patterns(
+    '',
+    url(r'^startups/$', startup_list, name='startup-list'),
+    url(r'^startup/(?P<pk>\w+)/', startup_detail, name='startup-detail'),
+)

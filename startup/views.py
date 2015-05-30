@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from restful.urls import QUESTION_ANSWER_URL
+# from restful.urls import QUESTION_ANSWER_URL
 from models import *
 
 # Create your views here.
