@@ -42,6 +42,8 @@ class AnswerOptionTranslation(models.Model):
 
 
 class Question(models.Model):
+    _questions_translation = {} #key language nick, value - questions
+
     question_nick = models.CharField(max_length=50, default="")
     question_category = models.ForeignKey(QuestionCategory, default=0)
     question_parent = models.ForeignKey('self', blank=True, null=True)
@@ -62,8 +64,14 @@ class Question(models.Model):
         return Question.objects.filter(question_parent=self)
 
     @staticmethod
-    def get_questions_translation(language):
-        return QuestionTranslation.objects.filter(language=language)
+    def get_questions_translation(cls, language):
+        return cls._questions_translation[language]
+
+    @staticmethod
+    def load_questions_translation(cls):
+        for language in Language.objects.all():
+            questions_translation = QuestionTranslation.objects.filter(language=language)
+            cls._questions_translation[language] = questions_translation
 
 class QuestionTranslation(models.Model):
     question = models.ForeignKey('Question', default=0)
@@ -90,6 +98,7 @@ class Startup(models.Model):
     stage = models.ForeignKey('StartupStage', null=True)
     logo = models.ImageField(upload_to='startup/logo', null=True)
     profile_image = models.ImageField(upload_to='startup/logo', null=True)
+    # location =
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
 

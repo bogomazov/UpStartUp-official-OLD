@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 
     'djangobower',
     'djangular',
@@ -33,6 +34,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_extensions',
     'werkzeug',
+    'cities',
     # 'south',
     # 'social.apps.django_app.default',
     # 'social_auth',
@@ -117,7 +119,7 @@ WSGI_APPLICATION = 'upstartup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'upstartup',
         'USER': 'db_admin',
         'PASSWORD': 'password1234',
@@ -175,6 +177,8 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost:3000'
 )
+
+CITIES_POSTAL_CODES = ['US', 'CA', 'UA']
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
