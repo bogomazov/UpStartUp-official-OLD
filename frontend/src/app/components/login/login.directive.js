@@ -6,7 +6,7 @@ class LoginFormDirective {
   constructor() {
     this.restrict = 'E';
     this.controller = LoginCtrl;
-    this.templateUrl = '../app/components/login/login.html';
+    this.templateUrl = '../app/components/login/login.directive.html';
   }
 }
 

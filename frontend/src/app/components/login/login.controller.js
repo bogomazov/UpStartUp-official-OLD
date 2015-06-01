@@ -4,8 +4,9 @@ class LoginCtrl {
   constructor($scope, LoginService) {
 
     $scope.checkLogin = function(user) {
-      LoginService.checkUserAuthentication(angular.copy(user)).success(function(data) {
-        console.log(data);
+      LoginService.checkUserAuthentication(angular.copy(user))
+      .success(function(data) {
+      console.log(data);
       });
     };
 
