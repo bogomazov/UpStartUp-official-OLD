@@ -33,3 +33,4 @@ virtualenv==12.0.7
 django-extensions==1.5.5
 Werkzeug==0.10.4
 django-cross-origin==0.9.0
+django-cities==0.4.1
