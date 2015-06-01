@@ -33,3 +33,6 @@ class StartupSerializer(serializers.HyperlinkedModelSerializer):
             update_session_auth_hash(self.context.get('request'), instance)
 
         return instance
+
+    def validate(self, data):
+        if data['name']

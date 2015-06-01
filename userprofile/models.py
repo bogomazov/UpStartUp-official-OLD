@@ -95,6 +95,16 @@ class UserProfile(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_admin
 
+# class Location(models.Model):
+#     name = models.CharField(max_length=200, unique=True)
+#     country = models.ForeignKey('Country')
+#     lon = models.FloatField()
+#     lat = models.FloatField()
+#
+# class Country(models.Model):
+#     code = models.CharField(max_length=2, unique=True)
+#    name = models.CharField(max_length=200, unique=True)
+
 
 
 
