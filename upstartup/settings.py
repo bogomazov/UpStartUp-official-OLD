@@ -171,6 +171,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8000',
+    'localhost:3000'
+)
+
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
