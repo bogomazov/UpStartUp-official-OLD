@@ -24,7 +24,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
+    # 'django.contrib.gis',
 
     'djangobower',
     'djangular',
@@ -34,12 +34,16 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_extensions',
     'werkzeug',
+    'cities_light',
     # 'cities',
     # 'south',
     # 'social.apps.django_app.default',
     # 'social_auth',
     # 'rest_framework_swagger',
 )
+
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['ru', 'en']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['UA', 'US']
 # SOCIAL_AUTH_STORAGE = 'social.apps.django_app.me.models.DjangoStorage'
 BOWER_INSTALLED_APPS = (
     'angularjs',
@@ -119,11 +123,13 @@ WSGI_APPLICATION = 'upstartup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'upstartup',
-        'USER': 'db_admin',
-        'PASSWORD': 'password1234',
-        'HOST': 'localhost'
+        # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        # 'PASSWORD': 'password1234',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 

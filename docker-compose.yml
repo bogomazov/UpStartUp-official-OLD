@@ -1,5 +1,7 @@
+#db:
+#  image: postgres
 db:
-  image: postgres
+  image: mdillon/postgis
 web:
   build: .
   command: python manage.py runserver 0.0.0.0:8000
