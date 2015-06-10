@@ -29,8 +29,8 @@ INSTALLED_APPS = (
     'djangobower',
     'djangular',
     'compressor',
-    'startup',
-    'userprofile',
+    'app.startup',
+    'app.userprofile',
     'rest_framework',
     'django_extensions',
     'werkzeug',
@@ -121,6 +121,19 @@ WSGI_APPLICATION = 'upstartup.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         # 'PASSWORD': 'password1234',
+#         'HOST': 'localhost',
+#         # 'HOST': 'db',
+#         # 'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
@@ -128,6 +141,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         # 'PASSWORD': 'password1234',
+        #'HOST': 'localhost',
         'HOST': 'db',
         'PORT': '5432',
     }
