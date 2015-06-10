@@ -3,13 +3,12 @@ Platform for lean startup development.
 
 ## Installation
 
+First of all install `docker` and `docker-compose` on your machine
+
 * `$ git clone git@github.com:bogomazov/UpStartUp-official.git`
-* `$ virtualenv upstartup-env`
-* `$ cd upstartup/`
-* `$ pip install -r requirements.txt`
-* `$ bower install`
-* `$ python manage.py migrate`
-* `$ python manage.py runserver`
+* if you are a front-end developer `$ docker-compose run web bash` and you will be able to do any `python manage.py` tasks
+* if you are a front-end developer `$ docker-compose up -d` to run a server on port 8000
+* `boot2docker ip` - will show you ip of VM where django is running with port 8000. (you may want to customise looking in your `hosts` file) 
 
 ## Front-end
 
