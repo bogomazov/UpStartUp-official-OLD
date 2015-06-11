@@ -2,7 +2,7 @@ db:
   image: bogomazov/upstartup-postgres
 web:
   image: bogomazov/upstartup
-  command: python manage.py runserver 0.0.0.0:8000
+  command: uwsgi --ini project-uwsgi.ini
   volumes:
     - .:/upstartup
   ports:
