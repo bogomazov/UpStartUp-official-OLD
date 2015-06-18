@@ -3,7 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from userprofile.views import UserProfileViewSet
+from app.userprofile.views import UserProfileViewSet
+from app.startup.views import StartupViewSet
 
 class APIRoot(APIView):
     def get(self, request):
@@ -15,6 +16,8 @@ class APIRoot(APIView):
             'User Register': reverse('register', request=request),
             'Check username or email for uniqness': reverse('unique', request=request),
             'User List': reverse('userprofile-list', request=request),
-            'User Get': reverse('userprofile-detail', request=request, kwargs={'pk': '9'}),
+            'User Detail': reverse('userprofile-detail', request=request, kwargs={'pk': '9'}),
+            'Startup List': reverse('startup-list', request=request),
+            'Startup Detail': reverse('startup-detail', request=request, kwargs={'pk': '9'})
             # 'logout': reverse('LogoutView.as_view()', request=request)
         })

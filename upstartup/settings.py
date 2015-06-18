@@ -26,15 +26,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 'django.contrib.gis',
 
-    'djangobower',
-    'djangular',
-    'compressor',
     'app.startup',
     'app.userprofile',
     'rest_framework',
     'django_extensions',
     'werkzeug',
     'cities_light',
+    'dj_static'
     # 'cities',
     # 'south',
     # 'social.apps.django_app.default',
@@ -45,19 +43,6 @@ INSTALLED_APPS = (
 CITIES_LIGHT_TRANSLATION_LANGUAGES = ['ru', 'en']
 CITIES_LIGHT_INCLUDE_COUNTRIES = ['UA', 'US']
 # SOCIAL_AUTH_STORAGE = 'social.apps.django_app.me.models.DjangoStorage'
-BOWER_INSTALLED_APPS = (
-    'angularjs',
-    'jquery',
-    'bootstrap',
-    'angular-xeditable',
-    'angular-animate',
-    'angular-cookies',
-    'angular-touch',
-    'angular-sanitize',
-    'angular-resource',
-    'angular-route',
-    'angular-mocks'
-)
 
 AUTHENTICATION_BACKENDS = (
     # 'social.backends.linkedin.LinkedinOAuth2',
@@ -166,20 +151,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/staticfiles/'
+# STATIC_ROOT = 'static'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
-BOWER_COMPONENTS_ROOT = os.path.join(STATIC_ROOT, 'libs')
 
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'djangobower.finders.BowerFinder',
-    'compressor.finders.CompressorFinder',
-)
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
@@ -200,7 +182,6 @@ CORS_ORIGIN_WHITELIST = (
 
 CITIES_POSTAL_CODES = ['US', 'CA', 'UA']
 
-COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DEFAULT_FROM_EMAIL = 'bogomazov1998@gmail.com'

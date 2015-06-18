@@ -96,8 +96,8 @@ class Startup(models.Model):
     name = models.CharField(max_length=100, unique=True)
     founder = models.ForeignKey(UserProfile)
     stage = models.ForeignKey('StartupStage', null=True)
-    logo = models.ImageField(upload_to='startup/logo', null=True)
-    profile_image = models.ImageField(upload_to='startup/logo', null=True)
+    logo = models.ImageField(upload_to='startup/logo', blank=True)
+    profile_image = models.ImageField(upload_to='startup/logo', blank=True)
     # location =
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)

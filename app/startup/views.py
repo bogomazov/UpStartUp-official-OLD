@@ -5,6 +5,8 @@ from rest_framework import permissions, status, views, viewsets
 from rest_framework.response import Response
 # from restful.urls import QUESTION_ANSWER_URL
 from models import *
+from serializers import StartupSerializer
+from app.userprofile.permissions import IsUserOwner
 
 # Create your views here.
 
@@ -84,8 +86,8 @@ def get_question_answer_context(startup_pk, userprofile):
 
 class StartupViewSet(viewsets.ModelViewSet):
     # lookup_field = 'username'
-    queryset = UserProfile.objects.all()
-    serializer_class = UserProfileSerializer
+    queryset = Startup.objects.all()
+    serializer_class = StartupSerializer
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:

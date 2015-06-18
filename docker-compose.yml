@@ -1,12 +1,26 @@
-db:
+nginx:
+   build: nginx-uwsgi/
+   links:
+       - django:django
+   ports:
+       - "80:80"
+dbdata:
   image: bogomazov/upstartup-postgres
-web:
-  image: bogomazov/upstartup
-  command: uwsgi --ini project-uwsgi.ini
   volumes:
-    - .:/upstartup
-  ports:
-    - "8000:8000"
-  links:
-    - db
+     - /var/lib/postgresql
+  command: true
+db:
+    image: bogomazov/upstartup-postgres
+    volumes_from:
+       - dbdata
+django:
+    image: bogomazov/upstartup
+    command: uwsgi --http :9000 --wsgi-file upstartup/wsgi.py
+    # command: bash
+    volumes:
+         - .:/upstartup
+    ports:
+         - "9000:9000"
+    links:
+        - db
 

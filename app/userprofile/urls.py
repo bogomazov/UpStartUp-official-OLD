@@ -1,7 +1,7 @@
 __author__ = 'andrey'
 
 from django.conf.urls import include, patterns, url
-from userprofile.views import LoginView, LogoutView, RegisterView, CheckUniqueView, UserProfileViewSet
+from app.userprofile.views import LoginView, LogoutView, RegisterView, CheckUniqueView, UserProfileViewSet
 
 userprofile_list = UserProfileViewSet.as_view({
     'get': 'list',

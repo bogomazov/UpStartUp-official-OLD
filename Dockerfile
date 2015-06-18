@@ -9,4 +9,8 @@ ADD . /upstartup/
 
 RUN pip install uwsgi
 
+# enable ssh access to container
+# RUN rm -f /etc/service/sshd/down
+
+
 

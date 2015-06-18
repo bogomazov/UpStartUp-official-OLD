@@ -2,7 +2,7 @@
 __author__ = 'andrey'
 
 from django.conf.urls import include, patterns, url
-from userprofile.views import StartupViewSet
+from views import StartupViewSet
 
 startup_list = StartupViewSet.as_view({
     'get': 'list',

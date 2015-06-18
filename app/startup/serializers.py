@@ -35,4 +35,4 @@ class StartupSerializer(serializers.HyperlinkedModelSerializer):
         return instance
 
     def validate(self, data):
-        if data['name']
+        print("Hey!")
